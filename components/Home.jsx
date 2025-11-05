@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Hero from './Hero'
 import OurBestSeller from './OurBestSeller'
 import ManWomen from './ManWomen'
+import MenSweaters from './MenSweaters'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
     <Hero/>
     <OurBestSeller/>
     <ManWomen/>
+    <MenSweaters/>
     </>
   )
 }

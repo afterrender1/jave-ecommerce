@@ -1,42 +1,42 @@
 import React from 'react'
 
-const OurBestSeller = () => {
+const MenSweaters = () => {
   const products = [
     {
       id: 1,
-      name: 'Linen Summer Dress',
-      title: 'Light & Flowy',
-      price: '$89',
-      color: 'Beige',
-      image: '/images/lean1.jpg',
-      hoverImage: '/images/lean2.jpg',
+      name: 'Wool Crewneck Sweater',
+      title: 'Soft Merino Wool',
+      price: '$119',
+      color: 'Charcoal',
+      image: '/images/mensw2.jpg',
+      hoverImage: '/images/mensw1.jpg',
     },
     {
       id: 2,
-      name: 'Classic Blazer',
-      title: 'Tailored Fit',
-      price: '$129',
-      color: 'Ivory',
-      image: '/images/blaz1.png',
-      hoverImage: '/images/bla2.png',
+      name: 'Cashmere Pullover',
+      title: 'Premium Warmth',
+      price: '$149',
+      color: 'Camel',
+      image: '/images/mensw4.jpg',
+      hoverImage: '/images/mensw3.jpg',
     },
     {
       id: 3,
-      name: 'Cotton Midi Dress',
-      title: 'Soft Texture',
-      price: '$99',
-      color: 'Olive',
-      image: '/images/cotton.png',
-      hoverImage: '/images/c2.png',
+      name: 'Cable Knit Sweater',
+      title: 'Textured Design',
+      price: '$129',
+      color: 'Ivory',
+      image: '/images/mensw8.png',
+      hoverImage: '/images/mensw7.png',
     },
     {
       id: 4,
-      name: 'Chic Evening Gown',
-      title: 'Elegant Silhouette',
-      price: '$159',
-      color: 'Black',
-      image: '/images/ch1.png',
-      hoverImage: '/images/ch2.png',
+      name: 'Turtleneck Sweater',
+      title: 'Elegant Fit',
+      price: '$139',
+      color: 'Navy Blue',
+      image: '/images/mensw9.png',
+      hoverImage: '/images/mensw10.png',
     },
   ]
 
@@ -44,14 +44,14 @@ const OurBestSeller = () => {
     <section className="w-full bg-white py-40">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-14 tracking-wide">
-          Our Best Sellers
+          Men’s Sweaters
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 cursor-pointer">
           {products.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded border border-gray-100 bg-white transition-all "
+              className="group relative overflow-hidden rounded border border-gray-100 bg-white transition-all"
             >
               {/* Image wrapper */}
               <div className="relative w-full h-[500px] overflow-hidden">
@@ -84,4 +84,4 @@ const OurBestSeller = () => {
   )
 }
 
-export default OurBestSeller
+export default MenSweaters

@@ -1,4 +1,13 @@
 import React from 'react'
+import Image from 'next/image' 
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+   subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    style: ['normal', 'italic'], 
+
+})
 
 const OurBestSeller = () => {
   const products = [
@@ -51,26 +60,30 @@ const OurBestSeller = () => {
           {products.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded border border-gray-100 bg-white transition-all "
+              className="group relative overflow-hidden rounded border border-gray-100 bg-white transition-all"
             >
               {/* Image wrapper */}
               <div className="relative w-full h-[500px] overflow-hidden">
                 {/* Default image */}
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
-                  className="absolute inset-0 w-full h-full object-cover object-center transition-opacity  group-hover:opacity-0"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  className="object-cover object-center absolute inset-0 transition-opacity  group-hover:opacity-0"
                 />
                 {/* Hover image */}
-                <img
+                <Image
                   src={item.hoverImage}
                   alt={`${item.name} hover`}
-                  className="absolute inset-0 w-full h-full object-cover object-center opacity-0 transition-opacity  group-hover:opacity-100"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  className="object-cover object-center absolute inset-0 opacity-0 transition-opacity  group-hover:opacity-100"
                 />
               </div>
 
               {/* Content */}
-              <div className="p-6 text-center">
+              <div className="p-6 text-center" style={{fontFamily : "Poppins"}}>
                 <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
                 <p className="text-sm text-gray-500 mb-1">{item.title}</p>
                 <p className="text-gray-900 font-semibold">{item.price}</p>
@@ -85,3 +98,4 @@ const OurBestSeller = () => {
 }
 
 export default OurBestSeller
+ 

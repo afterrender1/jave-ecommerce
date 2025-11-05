@@ -70,7 +70,7 @@ const MenSweaters = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 text-center">
+              <div className="p-6 text-center" style={{fontFamily : "Poppins"}}>
                 <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
                 <p className="text-sm text-gray-500 mb-1">{item.title}</p>
                 <p className="text-gray-900 font-semibold">{item.price}</p>

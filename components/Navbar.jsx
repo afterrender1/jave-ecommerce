@@ -1,24 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import {
-  Menu,
-  Search,
-  HelpCircle,
-  User,
-  ShoppingCart,
-  Handbag
-} from "lucide-react";
-import {Poppins ,  Libre_Barcode_128} from "next/font/google";
-
+import { Menu, Search, HelpCircle, User, Handbag } from "lucide-react";
+import { Poppins, Libre_Barcode_128 } from "next/font/google";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
-
-
-
 
 const libreBarcode = Libre_Barcode_128({
   variable: "--font-libre-barcode",
@@ -26,55 +15,66 @@ const libreBarcode = Libre_Barcode_128({
   weight: ["400"],
 });
 
-
 export default function Navbar() {
   return (
-    <header className="w-full bg-white p-8">
-      <div className=" mx-10">
-        <nav className="flex items-center justify-between ">
-
-          {/* LEFT: slim vertical bar + brand */}
+    <header className="backdrop-blur-md bg-transparent">
+      <div className="mx-20 px-6 py-4">
+        <nav className="flex items-center justify-between">
+          {/* LEFT: Menu + Brand */}
           <div className="flex items-center gap-4">
-            {/* slim left bar with menu icon */}
-            <div className="flex h-12 w-12 items-center justify-center rounded-sm  -">
-              <Menu className="h-10 w-10 font-light text-gray-700" />
-            </div>
+            {/* Menu icon (visible only on mobile) */}
+            <button className="flex  h-10 w-10 items-center justify-center cursor-pointer text-gray-800 hover:text-gray-600 transition">
+              <Menu className="h-70 w-70" />
+            </button>
 
-            {/* Brand (big, classic) */}
-          <Link href="/" className="text-[12rem] text-gray-900" style={{ fontFamily: 'libreBarcode' }}>
-  <h1 className="leading-none">JAVÉ</h1>
-</Link>
+            {/* Brand Name */}
+            <Link
+              href="/"
+              className={`${libreBarcode.variable} text-gray-900 tracking-wide text-[8rem] sm:text-[10rem] md:text-[12rem]`}
+              style={{ fontFamily: "Libre Barcode 128" }}
+            >
+              <h1 className="leading-none">JAVÉ</h1>
+            </Link>
           </div>
 
-          {/* RIGHT: search, help, login, cart */}
-          <div className="flex items-center gap-5">
-            {/* Search */}
-            <div className="hidden md:flex items-center border-gray-200  border-b bg-white px-6 py-2">
-              <Search className="mr-2 h-4 w-4 text-gray-500" />
+          {/* RIGHT: Icons and Links */}
+          <div className="flex items-center gap-6">
+            {/* Search bar (hidden on mobile) */}
+            <div className="hidden md:flex items-center border-b border-gray-300 px-4 py-1 text-gray-700">
+              <Search className="h-4 w-4 mr-2" />
               <input
-                aria-label="Search"
-                placeholder="Search products, styles..."
-                className="w-60 bg-white text-base placeholder-gray-400 outline-none"
+                type="text"
+                placeholder="Search"
+                className="bg-transparent w-40 md:w-60 text-sm focus:outline-none placeholder-gray-400"
               />
             </div>
 
             {/* Help link */}
-            <Link href="/help" className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900">
-                <span className="hidden sm:inline">HELP</span>
+            <Link
+              href="/help"
+              className="hidden sm:inline text-sm text-gray-700 hover:text-gray-900 transition"
+            >
+              HELP
             </Link>
 
             {/* Login */}
-            <Link href="/account/login" className="flex items-center gap-2 rounded-md   px-3 py-2 text-sm text-gray-600 ">
-                <span>LOGIN</span>
+            <Link
+              href="/account/login"
+              className="text-sm text-gray-700 hover:text-gray-900 transition"
+            >
+              LOGIN
             </Link>
 
             {/* Cart */}
-            <Link href="/cart" className="relative flex items-center gap-2 rounded-md   px-3 py-2 text-sm text-gray-600 ">
-                <Handbag className="h-5 w-5" />
-                <span className="hidden sm:inline">SHOPPING BAG</span>
-
-                {/* example badge */}
-                <span className="absolute -right-2 -top-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-800 text-xs text-white">3</span>
+            <Link
+              href="/cart"
+              className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 transition"
+            >
+              <Handbag className="h-5 w-5" />
+              <span className="hidden sm:inline">BAG</span>
+              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gray-900 text-[10px] text-white">
+                3
+              </span>
             </Link>
           </div>
         </nav>

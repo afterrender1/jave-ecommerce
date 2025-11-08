@@ -50,7 +50,7 @@ const OurBestSeller = () => {
   ]
 
   return (
-    <section className="w-full bg-white pt-70">
+    <section className="w-full bg-white pt-40">
       <div className="mx-40 px-4 md:px-6">
         <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-14 tracking-wide">
           Our Best Sellers

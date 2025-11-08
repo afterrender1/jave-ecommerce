@@ -14,10 +14,10 @@ const heroImages = [
 // Categories
 const categories = [
   { name: "Pakistani", image: "/categories/pakistani.png" },
-  { name: "Western", image: "/categories/west.png" },
-  { name: "Casual", image: "/categories/casual.png" },
-  { name: "Formal", image: "/categories/formal.png" },
-  { name: "Wedding", image: "/categories/wedding.png" },
+  { name: "Western", image: "/categories/west2.png" },
+  { name: "Casual", image: "/categories/casual4.png" },
+  { name: "Formal", image: "/categories/formal1.png" },
+  { name: "Wedding", image: "/categories/wedd.png" },
 ];
 
 // Featured Products
@@ -28,8 +28,8 @@ const featured = [
     title: "Handcrafted Detailing",
     price: "$280",
     color: "Emerald Green",
-    image: "/products/dress1.png",
-    hoverImage: "/products/dress2.png",
+    image: "/images/women/d1.png",
+    hoverImage: "/images/women/d2.png",
   },
   {
     id: 2,
@@ -37,8 +37,8 @@ const featured = [
     title: "Effortless Style",
     price: "$85",
     color: "Off White",
-    image: "/products/top1.png",
-    hoverImage: "/products/top2.png",
+    image: "/images/women/d3.png",
+    hoverImage: "/images/women/d4.png",
   },
   {
     id: 3,
@@ -46,8 +46,8 @@ const featured = [
     title: "Luxury Edition",
     price: "$450",
     color: "Wine Red",
-    image: "/products/dress3.png",
-    hoverImage: "/products/dress4.png",
+    image: "/images/women/d5.png",
+    hoverImage: "/images/women/d6.png",
   },
   {
     id: 4,
@@ -55,8 +55,8 @@ const featured = [
     title: "Refined Silhouette",
     price: "$320",
     color: "Navy Blue",
-    image: "/products/suit1.png",
-    hoverImage: "/products/suit2.png",
+    image: "/images/women/d7.png",
+    hoverImage: "/images/women/d8.png",
   },
 ];
 
@@ -160,20 +160,24 @@ const WomenPage = () => {
             {featured.map((item) => (
               <div
                 key={item.id}
-                className="group relative overflow-hidden rounded border border-gray-100 bg-white transition-all"
+                className="group relative overflow-hidden rounded border border-gray-100  transition-all"
               >
-                <div className="relative w-full h-[450px] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-0"
-                  />
-                  <img
-                    src={item.hoverImage}
-                    alt={`${item.name} hover`}
-                    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity group-hover:opacity-100"
-                  />
-                </div>
+        <div className="relative w-full h-[450px] overflow-hidden group">
+  {/* Default Image */}
+  <img
+    src={item.image}
+    alt={item.name}
+    className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
+  />
+
+  {/* Hover Image */}
+  <img
+    src={item.hoverImage}
+    alt={`${item.name} hover`}
+    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-100"
+  />
+</div>
+
                 <div className="p-6 text-center" style={{ fontFamily: "Poppins" }}>
                   <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
                   <p className="text-sm text-gray-500 mb-1">{item.title}</p>

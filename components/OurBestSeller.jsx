@@ -78,7 +78,7 @@ const OurBestSeller = () => {
                   alt={`${item.name} hover`}
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover object-center absolute inset-0 opacity-0 transition-opacity  group-hover:opacity-100"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0  transition duration-700  group-hover:opacity-100 group-hover:scale-100"
                 />
               </div>
 

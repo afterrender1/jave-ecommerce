@@ -4,10 +4,10 @@ import React from "react";
 
 const categories = [
   { name: "Pakistani", image: "/categories/pakistani.png" },
-  { name: "Western", image: "/categories/west.png" },
-  { name: "Casual", image: "/categories/casual.png" },
-  { name: "Formal", image: "/categories/formal.png" },
-  { name: "Wedding", image: "/categories/wedding.png" },
+  { name: "Western", image: "/categories/west2.png" },
+  { name: "Casual", image: "/categories/casual4.png" },
+  { name: "Formal", image: "/categories/formal1.png" },
+  { name: "Wedding", image: "/categories/wedd.png" },
 ];
 
 const Categories = () => {

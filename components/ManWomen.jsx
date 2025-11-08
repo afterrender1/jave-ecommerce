@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const ManWomen = () => {
@@ -24,7 +25,7 @@ const ManWomen = () => {
       <div className="mx-40 px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {categories.map((item) => (
-            <a
+            <Link
               key={item.id}
               href={item.link}
               className="group relative block overflow-hidden rounded"
@@ -48,7 +49,7 @@ const ManWomen = () => {
                   Explore Collection
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

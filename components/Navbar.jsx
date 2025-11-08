@@ -18,7 +18,7 @@ const raleway = Raleway({
 export default function Navbar() {
   return (
     <header className="backdrop-blur-md bg-white/40 sticky top-0 z-50 shadow-sm">
-      <div className="mx-6 md:mx-20 py-3">
+      <div className="mx-6 md:mx-50 py-3">
         <nav className="flex items-center justify-between">
           {/* LEFT: Menu + Brand */}
           <div className="flex items-center gap-4">

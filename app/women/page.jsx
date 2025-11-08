@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Sparkles, Heart, ShoppingBag } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
-// Hero Carousel Images
+// Hero Carousel
 const heroImages = [
   { src: "/images/h2big.png", title: "Summer Elegance", subtitle: "Light. Airy. Timeless." },
   { src: "/images/heroimg2.png", title: "Evening Glow", subtitle: "Dressed in starlight." },
@@ -19,88 +20,91 @@ const categories = [
   { name: "Wedding", image: "/categories/wedding.png" },
 ];
 
-// Sample Products
-const products = [
-  { name: "Silk Embroidered Kurta", price: "$280", image: "/products/dress1.png", tag: "New" },
-  { name: "Linen Summer Blouse", price: "$85", image: "/products/top1.png", tag: "Bestseller" },
-  { name: "Velvet Evening Gown", price: "$450", image: "/products/dress2.png", tag: "Limited" },
-  { name: "Leather Crossbody Bag", price: "$180", image: "/products/bag1.png" },
-  { name: "Tailored Wool Blazer", price: "$320", image: "/products/suit1.png", tag: "Sale" },
+// Featured Products
+const featured = [
+  {
+    id: 1,
+    name: "Silk Embroidered Kurta",
+    title: "Handcrafted Detailing",
+    price: "$280",
+    color: "Emerald Green",
+    image: "/products/dress1.png",
+    hoverImage: "/products/dress2.png",
+  },
+  {
+    id: 2,
+    name: "Linen Summer Blouse",
+    title: "Effortless Style",
+    price: "$85",
+    color: "Off White",
+    image: "/products/top1.png",
+    hoverImage: "/products/top2.png",
+  },
+  {
+    id: 3,
+    name: "Velvet Evening Gown",
+    title: "Luxury Edition",
+    price: "$450",
+    color: "Wine Red",
+    image: "/products/dress3.png",
+    hoverImage: "/products/dress4.png",
+  },
+  {
+    id: 4,
+    name: "Tailored Wool Blazer",
+    title: "Refined Silhouette",
+    price: "$320",
+    color: "Navy Blue",
+    image: "/products/suit1.png",
+    hoverImage: "/products/suit2.png",
+  },
 ];
 
 const WomenPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-play carousel
   useEffect(() => {
     if (!isAutoPlaying) return;
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
+    const interval = setInterval(() => nextSlide(), 5000);
     return () => clearInterval(interval);
   }, [currentIndex, isAutoPlaying]);
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1));
-  };
+  const nextSlide = () => setCurrentIndex((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrentIndex((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
 
   return (
-    <div className="w-full font-sans text-gray-900 antialiased">
+    <>
+      <Navbar />
 
-      {/* HERO CAROUSEL */}
+      {/* HERO SECTION (smaller height) */}
       <section
-        className="relative h-screen flex items-center justify-center overflow-hidden"
+        className="relative h-[80vh] flex items-center justify-center overflow-hidden"
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        {/* Background Image with Parallax Feel */}
-        <div className="absolute inset-0 -z-10">
-          {heroImages.map((img, idx) => (
-            <div
-              key={idx}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                idx === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <Image
-                src={img.src}
-                alt={img.title}
-                fill
-                className="object-cover brightness-[0.85]"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-            </div>
-          ))}
-        </div>
+        {heroImages.map((img, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              idx === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image src={img.src} alt={img.title} fill className="object-cover brightness-[0.85]" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/20" />
+          </div>
+        ))}
 
-        {/* Hero Content */}
+        {/* Hero Text */}
         <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
-          <p className="text-sm md:text-lg tracking-widest uppercase mb-3 opacity-90 flex items-center justify-center gap-2">
+          <p className="text-sm md:text-lg uppercase mb-2 flex items-center justify-center gap-2 opacity-90">
             <Sparkles className="w-4 h-4" /> New Season Arrival
           </p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-wide mb-4">
-            {heroImages[currentIndex].title}
-          </h1>
-          <p className="text-lg md:text-xl font-light tracking-wide mb-8 text-gray-200">
-            {heroImages[currentIndex].subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="group bg-white text-black px-8 py-4 rounded-full font-medium hover:bg-gray-100 transition flex items-center gap-2 justify-center">
-              Shop Collection <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition" />
-            </button>
-            <button className="border border-white/70 px-8 py-4 rounded-full font-medium hover:bg-white/10 backdrop-blur transition">
-              Explore Styles
-            </button>
-          </div>
+          <h1 className="text-4xl md:text-6xl font-light mb-3">{heroImages[currentIndex].title}</h1>
+          <p className="text-lg md:text-xl text-gray-200">{heroImages[currentIndex].subtitle}</p>
         </div>
 
-        {/* Carousel Controls */}
+        {/* Controls */}
         <button
           onClick={prevSlide}
           className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md p-3 rounded-full hover:bg-white/20 transition z-20"
@@ -113,160 +117,161 @@ const WomenPage = () => {
         >
           <ChevronRight className="w-6 h-6 text-white" />
         </button>
+      </section>
 
-        {/* Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {heroImages.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                idx === currentIndex ? "bg-white w-8" : "bg-white/50"
-              }`}
-            />
+      {/* SHOP BY CATEGORY */}
+      <section className="py-20 bg-linear-to-b from-gray-50 to-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8 text-center">
+          Shop by Category
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6 md:gap-35 ">
+          {categories.map((cat, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center cursor-pointer "
+            >
+              <div className="w-32 h-32 md:w-60 md:h-110 mb-3 relative rounded overflow-hidden border-2 border-gray-200">
+                <Image
+                  height={194} // match w/h for optimization
+                  width={194}
+                  src={cat.image}
+                  alt={cat.name}
+                  className="object-cover hover:scale-105 transition ease-in-out duration-300 w-full h-full rounded"
+                />
+              </div>
+              <p className="text-sm md:text-base font-medium text-gray-700">
+                {cat.name}
+              </p>
+            </div>
           ))}
         </div>
+      </div>
       </section>
 
-      {/* CATEGORY SECTION */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-light text-center mb-4">Shop by Category</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Curated collections for every mood and moment.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {categories.map((cat, index) => (
+      {/* FEATURED PIECES (MenSweater style) */}
+      <section className="w-full bg-white py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-14 tracking-wide">
+            Featured Pieces
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 cursor-pointer">
+            {featured.map((item) => (
               <div
-                key={index}
-                className="group cursor-pointer transition-all duration-300 hover:-translate-y-2"
+                key={item.id}
+                className="group relative overflow-hidden rounded border border-gray-100 bg-white transition-all"
               >
-                <div className="relative w-full aspect-square mb-4 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                <div className="relative w-full h-[450px] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-0"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
+                  <img
+                    src={item.hoverImage}
+                    alt={`${item.name} hover`}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity group-hover:opacity-100"
+                  />
                 </div>
-                <p className="text-center font-medium text-lg tracking-wide">{cat.name}</p>
+                <div className="p-6 text-center" style={{ fontFamily: "Poppins" }}>
+                  <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
+                  <p className="text-sm text-gray-500 mb-1">{item.title}</p>
+                  <p className="text-gray-900 font-semibold">{item.price}</p>
+                  <p className="text-sm text-gray-400">{item.color}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS */}
+      {/* LIMITED TIME OFFERS */}
+      <section className="py-20 bg-linear-to-r from-pink-50 to-rose-100">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
+            Limited-Time Offers
+          </h2>
+          <p className="text-gray-600 mb-12">
+            Discover stunning styles at exclusive prices — only for this week.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {["dress5.png", "top3.png", "bag2.png", "heels1.png"].map((img, i) => (
+              <div
+                key={i}
+                className="relative overflow-hidden rounded-2xl shadow-md bg-white cursor-pointer hover:scale-105 transition"
+              >
+                <Image
+                  src={`/offers/${img}`}
+                  alt="Offer"
+                  width={500}
+                  height={500}
+                  className="object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CUSTOMER FAVORITES */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-light">Featured Pieces</h2>
-            <button className="hidden md:flex items-center gap-2 text-sm uppercase tracking-widest hover:gap-3 transition-all">
-              View All <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-            {products.map((prod, index) => (
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-10">
+            Customer Favorites
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {["fav1.png", "fav2.png", "fav3.png", "fav4.png"].map((fav, i) => (
               <div
-                key={index}
-                className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                key={i}
+                className="overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition bg-gray-50 cursor-pointer"
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
-                  <Image
-                    src={prod.image}
-                    alt={prod.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {prod.tag && (
-                    <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white ${
-                      prod.tag === "Sale" ? "bg-red-500" : prod.tag === "New" ? "bg-emerald-500" : "bg-amber-500"
-                    }`}>
-                      {prod.tag}
-                    </span>
-                  )}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
-                  <button className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all bg-white p-3 rounded-full shadow-lg">
-                    <ShoppingBag className="w-5 h-5" />
-                  </button>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-medium text-lg mb-1">{prod.name}</h3>
-                  <p className="text-xl font-light text-gray-700">{prod.price}</p>
-                </div>
+                <Image
+                  src={`/favorites/${fav}`}
+                  alt="Favorite"
+                  width={400}
+                  height={400}
+                  className="object-cover w-full h-[400px]"
+                />
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* PROMOTION BANNER */}
-      <section className="py-20 bg-gradient-to-r from-amber-50 to-rose-50">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-4xl md:text-5xl font-light mb-4">The Golden Hour Collection</h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-            Limited-edition pieces crafted with 24K gold thread and hand-embroidered details.
-          </p>
-          <button className="bg-gradient-to-r from-amber-600 to-rose-600 text-white px-10 py-4 rounded-full font-medium hover:shadow-xl transition-shadow flex items-center gap-2 mx-auto">
-            Discover Now <Sparkles className="w-5 h-5" />
-          </button>
-        </div>
-      </section>
-
-      {/* NEWSLETTER */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-4">Stay Inspired</h2>
-          <p className="text-gray-400 mb-8">
-            Be the first to know about new drops, private sales, and style secrets.
-          </p>
-          <form className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="flex-1 px-6 py-4 rounded-full bg-gray-800 border border-gray-700 focus:border-amber-500 focus:outline-none transition"
-            />
-            <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-8 py-4 rounded-full font-medium transition">
-              Subscribe
-            </button>
-          </form>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-gray-950 text-gray-400 py-16">
+      <footer className="bg-gray-950 text-gray-400 py-14">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-semibold text-white mb-4">Shop</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white transition">New Arrivals</li>
-              <li className="hover:text-white transition">Best Sellers</li>
-              <li className="hover:text-white transition">Sale</li>
+              <li className="hover:text-white">New Arrivals</li>
+              <li className="hover:text-white">Best Sellers</li>
+              <li className="hover:text-white">Sale</li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-white mb-4">About</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white transition">Our Story</li>
-              <li className="hover:text-white transition">Sustainability</li>
-              <li className="hover:text-white transition">Craftsmanship</li>
+              <li className="hover:text-white">Our Story</li>
+              <li className="hover:text-white">Sustainability</li>
+              <li className="hover:text-white">Craftsmanship</li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-white mb-4">Support</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white transition">Contact</li>
-              <li className="hover:text-white transition">Shipping</li>
-              <li className="hover:text-white transition">Returns</li>
+              <li className="hover:text-white">Contact</li>
+              <li className="hover:text-white">Shipping</li>
+              <li className="hover:text-white">Returns</li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-white mb-4">Follow</h3>
             <div className="flex gap-4 text-sm">
-              <span className="hover:text-white transition">Instagram</span>
-              <span className="hover:text-white transition">Pinterest</span>
+              <span className="hover:text-white">Instagram</span>
+              <span className="hover:text-white">Pinterest</span>
             </div>
           </div>
         </div>
@@ -274,7 +279,7 @@ const WomenPage = () => {
           © 2025 Lumière. Crafted with care in Lahore.
         </p>
       </footer>
-    </div>
+    </>
   );
 };
 

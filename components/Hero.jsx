@@ -18,7 +18,7 @@ const Hero = () => {
       {/* Overlay Text with backdrop blur */}
 
     </section>
-          <div className="absolute left-120 top-160 z-50 flex flex-col items-center justify-end text-center text-white px-4 pb-0">
+          <div className="absolute left-120 top-160 z-30 flex flex-col items-center justify-end text-center text-white px-4 pb-0">
         <div className="backdrop-blur bg-black/20 rounded px-6 py-6 md:px-10 md:py-8">
           <p className="text-sm md:text-base tracking-widest uppercase mb-3">
             Discover new collection

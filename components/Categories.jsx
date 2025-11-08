@@ -18,19 +18,19 @@ const Categories = () => {
           Shop by Category
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6 md:gap-35 ">
           {categories.map((cat, index) => (
             <div
               key={index}
-              className="flex flex-col items-center cursor-pointer transition transform hover:scale-105"
+              className="flex flex-col items-center cursor-pointer "
             >
-              <div className="w-32 h-32 md:w-36 md:h-55 mb-3 relative rounded overflow-hidden border-2 border-gray-200">
+              <div className="w-32 h-32 md:w-60 md:h-110 mb-3 relative rounded overflow-hidden border-2 border-gray-200">
                 <Image
                   height={194} // match w/h for optimization
                   width={194}
                   src={cat.image}
                   alt={cat.name}
-                  className="object-cover w-full h-full rounded"
+                  className="object-cover hover:scale-105 transition ease-in-out duration-300 w-full h-full rounded"
                 />
               </div>
               <p className="text-sm md:text-base font-medium text-gray-700">

@@ -1,21 +1,24 @@
+import Image from 'next/image'
 import React from 'react'
 
 const Hero = () => {
   return (
     <>
     
-    <section className="w-full relative overflow-hidden flex items-center justify-center">
+    <section className="w-full relative py-6 overflow-hidden flex items-center justify-center">
       {/* Hero Image */}
-      <img
-        src="/images/heroimg2.png" // Replace with your image path
+      <Image
+     height={1200}
+     width={1400}
+        src="/images/h2big.png" // Replace with your image path
         alt="Plus size fashion model wearing elegant outfit"
-        className="w-full object-cover object-center"
+        className="border-2 border-[#C5A589] rounded-lg h-auto  max-h-[600px] md:max-h-[800px]"
       />
 
       {/* Overlay Text with backdrop blur */}
 
     </section>
-          <div className="absolute left-120 top-100 z-50 flex flex-col items-center justify-end text-center text-white px-4 pb-0">
+          <div className="absolute left-120 top-160 z-50 flex flex-col items-center justify-end text-center text-white px-4 pb-0">
         <div className="backdrop-blur bg-black/20 rounded px-6 py-6 md:px-10 md:py-8">
           <p className="text-sm md:text-base tracking-widest uppercase mb-3">
             Discover new collection

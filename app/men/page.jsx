@@ -31,8 +31,8 @@ const explore = [
     title: "Minimal Aesthetic",
     price: "$120",
     color: "Ivory",
-    image: "/images/men/explore/kurta1.png",
-    hoverImage: "/images/men/explore/kurta2.png",
+    image: "/images/menexplore/ckurta1.png",
+    hoverImage: "/images/menexplore/ckurta2.png",
   },
   {
     id: 2,
@@ -41,8 +41,9 @@ const explore = [
     title: "Heritage Line",
     price: "$145",
     color: "Deep Olive",
-    image: "/images/men/explore/embro1.png",
-    hoverImage: "/images/men/explore/embro2.png",
+       image: "/images/menexplore/emkurta1.png",
+
+    hoverImage: "/images/menexplore/emkurta2.png",
   },
 
   // Western
@@ -53,8 +54,8 @@ const explore = [
     title: "Everyday Icon",
     price: "$110",
     color: "Washed Blue",
-    image: "/images/men/explore/jacket1.png",
-    hoverImage: "/images/men/explore/jacket2.png",
+    image: "/images/menexplore/dem1.png",
+    hoverImage: "/images/menexplore/dem2.png",
   },
   {
     id: 4,
@@ -63,8 +64,8 @@ const explore = [
     title: "Power Cut",
     price: "$230",
     color: "Charcoal Gray",
-    image: "/images/men/explore/blazer1.png",
-    hoverImage: "/images/men/explore/blazer2.png",
+    image: "/images/menexplore/tailblazer1.png",
+    hoverImage: "/images/menexplore/tb2.png",
   },
 
   // Casual
@@ -75,8 +76,9 @@ const explore = [
     title: "Smart Comfort",
     price: "$60",
     color: "Sky Blue",
-    image: "/images/men/explore/polo1.png",
-    hoverImage: "/images/men/explore/polo2.png",
+       image: "/images/menexplore/polo1.png",
+
+    hoverImage: "/images/menexplore/p2.png",
   },
   {
     id: 6,
@@ -85,8 +87,8 @@ const explore = [
     title: "Relaxed Fit",
     price: "$75",
     color: "Sand",
-    image: "/images/men/explore/pants1.png",
-    hoverImage: "/images/men/explore/pants2.png",
+    image: "/images/menexplore/pants1.png",
+    hoverImage: "/images/menexplore/pants2.png",
   },
 
   // Formal
@@ -97,19 +99,21 @@ const explore = [
     title: "Precision Tailored",
     price: "$380",
     color: "Midnight Black",
-    image: "/images/men/explore/suit1.png",
-    hoverImage: "/images/men/explore/suit2.png",
+     image: "/images/menexplore/csuit1.png",
+
+    hoverImage: "/images/menexplore/csuit2.png",
   },
-  {
-    id: 8,
-    category: "Formal",
-    name: "Double Breasted Blazer",
-    title: "Luxury Line",
-    price: "$420",
-    color: "Navy",
-    image: "/images/men/explore/db1.png",
-    hoverImage: "/images/men/explore/db2.png",
-  },
+{
+  id: 8,
+  category: "Formal",
+  name: "Slim Fit Suit Jacket",
+  title: "Modern Gentleman",
+  price: "$450",
+  color: "Midnight Blue",
+  image: "/images/menexplore/fitjecket1.png",
+  hoverImage: "/images/menexplore/fitjecket2.png",
+},
+
 
   // Wedding
   {
@@ -119,8 +123,9 @@ const explore = [
     title: "Royal Edit",
     price: "$650",
     color: "Champagne Gold",
-    image: "/images/men/explore/sherwani1.png",
-    hoverImage: "/images/men/explore/sherwani2.png",
+       image: "/images/menexplore/sherwani1.png",
+
+    hoverImage: "/images/menexplore/sherwani2.png",
   },
   {
     id: 10,
@@ -129,8 +134,8 @@ const explore = [
     title: "Regal Sophistication",
     price: "$550",
     color: "Ivory Beige",
-    image: "/images/men/explore/prince1.png",
-    hoverImage: "/images/men/explore/prince2.png",
+    image: "/images/menexplore/princecoat.png",
+    hoverImage: "/images/menexplore/princecoat1.png",
   },
 ];
 

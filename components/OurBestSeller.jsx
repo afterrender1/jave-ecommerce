@@ -17,8 +17,8 @@ const OurBestSeller = () => {
       title: 'Light & Flowy',
       price: '$89',
       color: 'Beige',
-      image: '/images/lean1.jpg',
-      hoverImage: '/images/lean2.jpg',
+      image: '/images/bestseller/l1.png',
+      hoverImage: '/images/bestseller/l2.png',
     },
     {
       id: 2,
@@ -26,8 +26,8 @@ const OurBestSeller = () => {
       title: 'Tailored Fit',
       price: '$129',
       color: 'Ivory',
-      image: '/images/blaz1.png',
-      hoverImage: '/images/bla2.png',
+      image: '/images/bestseller/blazer1.png',
+      hoverImage: '/images/bestseller/blazer2.png',
     },
     {
       id: 3,
@@ -35,8 +35,8 @@ const OurBestSeller = () => {
       title: 'Soft Texture',
       price: '$99',
       color: 'Olive',
-      image: '/images/cotton.png',
-      hoverImage: '/images/c2.png',
+      image: '/images/bestseller/midi1.png',
+      hoverImage: '/images/bestseller/midi2.png',
     },
     {
       id: 4,
@@ -44,8 +44,8 @@ const OurBestSeller = () => {
       title: 'Elegant Silhouette',
       price: '$159',
       color: 'Black',
-      image: '/images/ch1.png',
-      hoverImage: '/images/ch2.png',
+      image: '/images/bestseller/chic1.png',
+      hoverImage: '/images/bestseller/chec2.png',
     },
   ]
 

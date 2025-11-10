@@ -8,9 +8,9 @@ import Footer from "@/components/Footer";
 
 // Hero Carousel
 const heroImages = [
-  { src: "/images/h2big.png", title: "Summer Elegance", subtitle: "Light. Airy. Timeless." },
-  { src: "/images/heroimg2.png", title: "Evening Glow", subtitle: "Dressed in starlight." },
-  { src: "/images/h2side2.png", title: "Modern Muse", subtitle: "Bold. Refined. You." },
+  { src: "/images/women/womenhero1.png", title: "Summer Elegance", subtitle: "Light. Airy. Timeless." },
+  { src: "/images/women/womenhero2.png", title: "Evening Glow", subtitle: "Dressed in starlight." },
+  { src: "/images/women/womenhero3.png", title: "Modern Muse", subtitle: "Bold. Refined. You." },
 ];
 
 // Categories
@@ -80,46 +80,90 @@ const WomenPage = () => {
       <Navbar />
 
       {/* HERO SECTION (smaller height) */}
-      <section
-        className="relative h-[80vh] flex items-center justify-center overflow-hidden"
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-      >
-        {heroImages.map((img, idx) => (
-          <div
-            key={idx}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              idx === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image src={img.src} alt={img.title} fill className="object-cover brightness-[0.85]" />
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/20" />
+  <section
+  className="relative h-[90vh] flex items-center justify-center overflow-hidden"
+  onMouseEnter={() => setIsAutoPlaying(false)}
+  onMouseLeave={() => setIsAutoPlaying(true)}
+>
+  {/* Carousel Container */}
+  <div className="relative flex items-center justify-center w-full h-full">
+    {heroImages.map((img, idx) => {
+      const isActive = idx === currentIndex;
+      const isPrev = idx === (currentIndex - 1 + heroImages.length) % heroImages.length;
+      const isNext = idx === (currentIndex + 1) % heroImages.length;
+
+      return (
+        <div
+          key={idx}
+          className={`absolute transition-all duration-700 ease-in-out ${
+            isActive
+              ? "z-30 scale-100 opacity-100"
+              : isPrev || isNext
+              ? "z-20 scale-90 opacity-90"
+              : "z-0 scale-75 opacity-0"
+          }`}
+          style={{
+            transform: isActive
+              ? "translateX(0)"
+              : isPrev
+              ? "translateX(-45%)"
+              : isNext
+              ? "translateX(45%)"
+              : "translateX(0)",
+          }}
+        >
+          <div className="relative w-[58vw] h-[70vh] rounded-2xl overflow-hidden ">
+            <Image
+              src={img.src}
+              alt={img.title}
+              fill
+              priority
+              className={`object-contain transition-transform duration-1200 ease-in-out ${
+                isActive ? "scale-100 brightness-[1]" : "scale-90 brightness-[0.8]"
+              }`}
+            />
+            <div className="absolute inset-0 " />
           </div>
-        ))}
-
-        {/* Hero Text */}
-        <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
-          <p className="text-sm md:text-lg uppercase mb-2 flex items-center justify-center gap-2 opacity-90">
-            <Sparkles className="w-4 h-4" /> New Season Arrival
-          </p>
-          <h1 className="text-4xl md:text-6xl font-light mb-3">{heroImages[currentIndex].title}</h1>
-          <p className="text-lg md:text-xl text-gray-200">{heroImages[currentIndex].subtitle}</p>
         </div>
+      );
+    })}
+  </div>
 
-        {/* Controls */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md p-3 rounded-full hover:bg-white/20 transition z-20"
-        >
-          <ChevronLeft className="w-6 h-6 text-white" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md p-3 rounded-full hover:bg-white/20 transition z-20"
-        >
-          <ChevronRight className="w-6 h-6 text-white" />
-        </button>
-      </section>
+  {/* Text Overlay */}
+  <div className="absolute bottom-16 z-40 text-center text-white px-6 max-w-5xl mx-auto">
+    <p className="text-sm md:text-lg uppercase mb-3 flex items-center justify-center gap-2 text-[#ffff] tracking-wide">
+      <Sparkles className="w-5 h-5 text-[#48A2FF]" /> The New Gentleman Edit
+    </p>
+    <h1 className="text-4xl md:text-6xl font-light mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+      {heroImages[currentIndex].title}
+    </h1>
+    <p className="text-lg md:text-xl text-black font-light">
+      {heroImages[currentIndex].subtitle}
+    </p>
+  </div>
+
+  {/* Navigation Controls */}
+  <button
+    onClick={prevSlide}
+    className="absolute left-10 top-1/2 -translate-y-1/2 
+    bg-white/40 backdrop-blur-xl 
+    p-7 rounded-full hover:scale-110 cursor-pointer hover:bg-white/60 
+    transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.3)] z-50"
+  >
+    <ChevronLeft className="w-8 h-8 text-black" />
+  </button>
+
+  <button
+    onClick={nextSlide}
+    className="absolute right-10 top-1/2 -translate-y-1/2 
+    bg-white/40 backdrop-blur-xl 
+    p-7 rounded-full hover:scale-110 cursor-pointer hover:bg-white/60 
+    transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.3)] z-50"
+  >
+    <ChevronRight className="w-8 h-8 text-black" />
+  </button>
+</section>
+
 
       {/* SHOP BY CATEGORY */}
       <section className="py-20 bg-linear-to-b from-gray-50 to-white">

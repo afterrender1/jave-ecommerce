@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Categories from "@/components/Categories";
+import Footer from "@/components/Footer";
 
 // Hero Carousel
 const heroImages = [
@@ -121,36 +123,163 @@ const WomenPage = () => {
 
       {/* SHOP BY CATEGORY */}
       <section className="py-20 bg-linear-to-b from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8 text-center">
-          Shop by Category
-        </h2>
+     
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6 md:gap-35 ">
-          {categories.map((cat, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center cursor-pointer "
-            >
-              <div className="w-32 h-32 md:w-60 md:h-110 mb-3 relative rounded overflow-hidden border-2 border-gray-200">
-                <Image
-                  height={194} // match w/h for optimization
-                  width={194}
-                  src={cat.image}
-                  alt={cat.name}
-                  className="object-cover hover:scale-105 transition ease-in-out duration-300 w-full h-full rounded"
-                />
-              </div>
-              <p className="text-sm md:text-base font-medium text-gray-700">
-                {cat.name}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Categories />
       </section>
 
-      {/* FEATURED PIECES (MenSweater style) */}
+    
+
+      {/* CATEGORY COLLECTION SECTION */}
+<section className="w-full bg-white py-28">
+  <div className="mx-auto max-w-7xl px-6">
+    <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-14 tracking-wide">
+      Explore by Style
+    </h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 cursor-pointer">
+      {[
+        // Pakistani
+        {
+          id: 1,
+          category: "Pakistani",
+          name: "Embroidered Lawn Set",
+          title: "Traditional Chic",
+          price: "$95",
+          color: "Ivory & Gold",
+          image: "/images/explore/lawnset2.png",
+          hoverImage: "/images/explore/lawn.png",
+        },
+        {
+          id: 2,
+          category: "Pakistani",
+          name: "Handcrafted Kurta",
+          title: "Classic Heritage",
+          price: "$89",
+          color: "Blush Pink",
+          image: "/images/explore/handc.png",
+          hoverImage: "/images/explore/handc2.png",
+        },
+
+        // Western
+        {
+          id: 3,
+          category: "Western",
+          name: "Denim Midi Dress",
+          title: "Everyday Comfort",
+          price: "$79",
+          color: "Blue Denim",
+          image: "/images/explore/midi.png",
+          hoverImage: "/images/explore/midi2.png",
+        },
+        {
+          id: 4,
+          category: "Western",
+          name: "Blazer Set",
+          title: "Effortless Elegance",
+          price: "$130",
+          color: "Cream",
+          image: "/images/explore/blazer.png",
+          hoverImage: "/images/explore/blazer2.png",
+        },
+
+        // Casual
+        {
+          id: 5,
+          category: "Casual",
+          name: "Cotton Top & Jeans",
+          title: "Laid-back Look",
+          price: "$65",
+          color: "Beige",
+          image: "/images/explore/ctop.png",
+          hoverImage: "/images/explore/ctop2.png",
+        },
+        {
+          id: 6,
+          category: "Casual",
+          name: "Floral Skirt Set",
+          title: "Everyday Bloom",
+          price: "$72",
+          color: "Soft Floral",
+          image: "/images/explore/floral.png",
+          hoverImage: "/images/explore/floral2.png",
+        },
+
+        // Formal
+        {
+          id: 7,
+          category: "Formal",
+          name: "Satin Evening Gown",
+          title: "Luxury Edit",
+          price: "$210",
+          color: "Emerald Green",
+          image: "/images/explore/gown.png",
+          hoverImage: "/images/explore/gown2.png",
+        },
+        {
+          id: 8,
+          category: "Formal",
+          name: "Velvet Suit",
+          title: "Classic Cut",
+          price: "$185",
+          color: "Deep Maroon",
+          image: "/images/explore/velvet.png",
+          hoverImage: "/images/explore/velvet2.png",
+        },
+
+        // Wedding
+        {
+          id: 9,
+          category: "Wedding",
+          name: "Bridal Lehenga",
+          title: "Royal Elegance",
+          price: "$450",
+          color: "Champagne",
+          image: "/images/explore/lehenga.png",
+          hoverImage: "/images/explore/lehenga2.png",
+        },
+        {
+          id: 10,
+          category: "Wedding",
+          name: "Reception Gown",
+          title: "Timeless Beauty",
+          price: "$399",
+          color: "Silver Grey",
+          image: "/images/explore/wedd.png",
+          hoverImage: "/images/explore/wedd2.png",
+        },
+      ].map((item) => (
+        <div
+          key={item.id}
+          className="group relative overflow-hidden rounded border border-gray-100 transition-all"
+        >
+          {/* Image with Hover Animation */}
+          <div className="relative w-full h-[450px] overflow-hidden group">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:opacity-0 group-hover:scale-105"
+            />
+            <img
+              src={item.hoverImage}
+              alt={`${item.name} hover`}
+              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-100"
+            />
+          </div>
+
+          {/* Details */}
+          <div className="p-6 text-center" style={{ fontFamily: "Poppins" }}>
+            <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
+            <p className="text-sm text-gray-500 mb-1">{item.title}</p>
+            <p className="text-gray-900 font-semibold">{item.price}</p>
+            <p className="text-sm text-gray-400">{item.color}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+  {/* FEATURED PIECES (MenSweater style) */}
       <section className="w-full bg-white py-28">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-14 tracking-wide">
@@ -190,62 +319,10 @@ const WomenPage = () => {
         </div>
       </section>
 
-      {/* LIMITED TIME OFFERS */}
-      <section className="py-20 bg-linear-to-r from-pink-50 to-rose-100">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
-            Limited-Time Offers
-          </h2>
-          <p className="text-gray-600 mb-12">
-            Discover stunning styles at exclusive prices — only for this week.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {["dress5.png", "top3.png", "bag2.png", "heels1.png"].map((img, i) => (
-              <div
-                key={i}
-                className="relative overflow-hidden rounded-2xl shadow-md bg-white cursor-pointer hover:scale-105 transition"
-              >
-                <Image
-                  src={`/offers/${img}`}
-                  alt="Offer"
-                  width={500}
-                  height={500}
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CUSTOMER FAVORITES */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-10">
-            Customer Favorites
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {["fav1.png", "fav2.png", "fav3.png", "fav4.png"].map((fav, i) => (
-              <div
-                key={i}
-                className="overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition bg-gray-50 cursor-pointer"
-              >
-                <Image
-                  src={`/favorites/${fav}`}
-                  alt="Favorite"
-                  width={400}
-                  height={400}
-                  className="object-cover w-full h-[400px]"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+ 
 
       {/* FOOTER */}
-      <footer className="bg-gray-950 text-gray-400 py-14">
+      {/* <footer className="bg-gray-950 text-gray-400 py-14">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-semibold text-white mb-4">Shop</h3>
@@ -282,7 +359,8 @@ const WomenPage = () => {
         <p className="text-center text-xs mt-12 text-gray-600">
           © 2025 Lumière. Crafted with care in Lahore.
         </p>
-      </footer>
+      </footer> */}
+      <Footer/>
     </>
   );
 };

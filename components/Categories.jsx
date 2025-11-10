@@ -6,7 +6,7 @@ const categories = [
   { name: "Pakistani", image: "/categories/pakistani.png" },
   { name: "Western", image: "/categories/west2.png" },
   { name: "Casual", image: "/categories/casual4.png" },
-  { name: "Formal", image: "/categories/formal1.png" },
+  { name: "Formal", image: "/categories/formal2.png" },
   { name: "Wedding", image: "/categories/wedd.png" },
 ];
 

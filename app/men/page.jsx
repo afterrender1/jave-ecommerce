@@ -147,8 +147,8 @@ const featured = [
     title: "Autumn Classic",
     price: "$340",
     color: "Camel",
-    image: "/images/men/featured/trench1.png",
-    hoverImage: "/images/men/featured/trench2.png",
+    image: "/images/menexplore/whoolcoat1.png",
+    hoverImage: "/images/menexplore/whoolcoat2.png",
   },
   {
     id: 2,
@@ -156,8 +156,8 @@ const featured = [
     title: "Luxury Casual",
     price: "$180",
     color: "Off White",
-    image: "/images/men/featured/shirt1.png",
-    hoverImage: "/images/men/featured/shirt2.png",
+    image: "/images/menexplore/silk1.png",
+    hoverImage: "/images/menexplore/silk2.png",
   },
   {
     id: 3,
@@ -165,8 +165,8 @@ const featured = [
     title: "British Edit",
     price: "$290",
     color: "Ash Gray",
-    image: "/images/men/featured/tweed1.png",
-    hoverImage: "/images/men/featured/tweed2.png",
+    image: "/images/menexplore/tblazer1.png",
+    hoverImage: "/images/menexplore/tblazer2.png",
   },
   {
     id: 4,
@@ -174,8 +174,8 @@ const featured = [
     title: "Summer Formal",
     price: "$310",
     color: "Ivory",
-    image: "/images/men/featured/linen1.png",
-    hoverImage: "/images/men/featured/linen2.png",
+ image: "/images/menexplore/linensuit.png",
+    hoverImage: "/images/menexplore/linensuit2.png",
   },
 ];
 

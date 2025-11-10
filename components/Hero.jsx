@@ -1,44 +1,51 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from 'next/image';
+import React from 'react';
+
+const heroImages = [
+  {
+    id: 1,
+    src: '/images/mainhero1.png',
+    title: 'SUMMER COLLECTION',
+    subtitle: 'Light & breezy outfits',
+  },
+  {
+    id: 2,
+    src: '/images/mainhero2.png',
+    title: 'FORMAL WEAR',
+    subtitle: 'Elegant & classy suits',
+  },
+];
 
 const Hero = () => {
   return (
-    <>
-    
-    <section className="w-full relative py-6 overflow-hidden flex items-center justify-center">
-      {/* Hero Image */}
-      <Image
-     height={1200}
-     width={1400}
-        src="/images/h2big.png" // Replace with your image path
-        alt="Plus size fashion model wearing elegant outfit"
-        className="border-2 border-[#C5A589] rounded-lg h-auto  max-h-[600px] md:max-h-[800px]"
-      />
+    <section className="w-full py-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {heroImages.map((img) => (
+          <div key={img.id} className="relative group">
+            <Image
+              src={img.src}
+              alt={img.title}
+              width={800}
+              height={1000}
+              className="w-full h-auto rounded-lg object-cover "
+            />
 
-      {/* Overlay Text with backdrop blur */}
-
-    </section>
-          <div className="absolute left-120 top-160 z-30 flex flex-col items-center justify-end text-center text-white px-4 pb-0">
-        <div className="backdrop-blur bg-black/20 rounded px-6 py-6 md:px-10 md:py-8">
-          <p className="text-sm md:text-base tracking-widest uppercase mb-3">
-            Discover new collection
-          </p>
-          <h1 className="text-4xl md:text-6xl font-light tracking-[0.2em] mb-6">
-            WEAR THE SUNSHINE
-          </h1>
-          <div className="flex gap-8 text-white text-sm md:text-base justify-center ">
-            <button className="border-b border-white hover:border-gray-300 transition cursor-pointer">
-              Shop Dresses
-            </button>
-            <button className="border-b border-white hover:border-gray-300 transition cursor-pointer">
-              Shop Bags
-            </button>
+            {/* Overlay Text */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+              <div className="backdrop-blur bg-black/20 rounded px-6 py-6 md:px-10 md:py-8 transition-opacity opacity-0 group-hover:opacity-100">
+                <p className="text-sm md:text-base tracking-widest uppercase mb-3">
+                  {img.subtitle}
+                </p>
+                <h1 className="text-3xl md:text-5xl font-light transition duration-700 tracking-widest mb-6">
+                  {img.title}
+                </h1>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-    </>
+    </section>
+  );
+};
 
-  )
-}
-
-export default Hero
+export default Hero;

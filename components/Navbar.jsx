@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Menu, Search, HelpCircle, User, Handbag } from "lucide-react";
 import { Poppins, Raleway } from "next/font/google";
+import Sidebar from "./Sidebar";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,7 +25,8 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             {/* Mobile Menu */}
             <button className="flex  h-10 w-10 items-center justify-center text-gray-800 hover:text-gray-600 transition">
-              <Menu className="h-8 w-8" />
+              {/* <Menu className="h-8 w-8" /> */}
+              <Sidebar/>
             </button>
 
             {/* Brand */}
